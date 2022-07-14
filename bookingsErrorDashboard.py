@@ -37,10 +37,7 @@ bvError,tuiError,dcError,bookedAlreadyError,combinationError,partnerError,totalE
 totalBookingsDirectory = '/appl/commwr/tmp/'
 today = datetime.date.today()
 yesterday = today - timedelta(days = 1)
-yesterday = str(yesterday)
-yesterday_formatted1 = datetime.datetime.strptime(yesterday, '%Y-%m-%d').strftime("%d/%m/%y")
 yesterday_formatted = datetime.datetime.strptime(yesterday, '%Y-%m-%d').strftime("%m/%d/%y")
-print (yesterday_formatted)
 errorscount = []
 
 for filename in os.listdir(directory):
@@ -66,7 +63,7 @@ for filename in os.listdir(directory):
                 elif ("Not available at our Partner" in x[1] or "Accommodation not available at our Partner" in x[1]):
                     partnerError = partnerError + 1
             rowobj = {}
-            rowobj["Date"] = yesterday_formatted1
+            rowobj["Date"] = yesterday_formatted
             rowobj["bvError"] = bvError
             rowobj["tuiError"] = tuiError
             rowobj["dcError"] = dcError
